@@ -25,3 +25,5 @@ const characters = [
         score: ["","","","","","","","","","",]
     },
 ]
+
+module.exports = characters;
