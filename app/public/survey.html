@@ -43,7 +43,8 @@
       <!-- Questions -->
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 1:</label>
-        <select class="form-control" id="Q1">
+        <select class="choices" id="Q1">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -54,7 +55,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 2:</label>
-        <select class="form-control" id="Q2">
+        <select class="choices" id="Q2">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -65,7 +67,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 3:</label>
-        <select class="form-control" id="Q3">
+        <select class="choices" id="Q3">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -76,7 +79,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 4:</label>
-        <select class="form-control" id="Q4">
+        <select class="choices" id="Q4">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -87,7 +91,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 5:</label>
-        <select class="form-control" id="Q5">
+        <select class="choices" id="Q5">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -98,7 +103,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 6:</label>
-        <select class="form-control" id="Q6">
+        <select class="choices" id="Q6">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -109,7 +115,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 7:</label>
-        <select class="form-control" id="Q7">
+        <select class="choices" id="Q7">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -120,7 +127,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 8:</label>
-        <select class="form-control" id="Q8">
+        <select class="choices" id="Q8">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -131,7 +139,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 9:</label>
-        <select class="form-control" id="Q9">
+        <select class="choices" id="Q9">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -142,7 +151,8 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Question 10:</label>
-        <select class="form-control" id="Q10">
+        <select class="choices" id="Q10">
+          <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -160,5 +170,26 @@
         <i class="fa fa-check-circle" aria-hidden="true"></i> Submit
       </button>
     </div>
+
+    <!-- Script -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#submit").on("click", function(event) {
+          event.preventDefault();
+
+          function validateSurvey() {
+            const isValid = true;
+            $("#name").each(function() {
+              if ($("#name").val() === "") isValid = false;
+            });
+            $(".choices").each(function() {
+              if ($(this).val() === "") isValid = false;
+            });
+            return isValid;
+          }
+          
+        });
+      });
+    </script>
   </body>
 </html>
