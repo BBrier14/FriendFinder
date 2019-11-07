@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   // Post request
   app.post("/api/characters", function(req, res) {
-    throw new Error("oops!");
+    
     const bestFriendDifference = 25;
     const matchScore = 0;
 
@@ -34,7 +34,7 @@ module.exports = function(app) {
     characterData.push(req.body);
     res.json({name: characterData[matchScore].name, photo: characterData[matchScore.photo]});
     console.log("posted")
-  });
+  })
 }
 
 
