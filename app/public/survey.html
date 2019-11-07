@@ -241,19 +241,21 @@
                 $("#q10").val()
               ]
             };
+            console.log(newPerson)
            
-            $.post("/api/characters", newPerson,
-            function(data){
-              $("#match-name").text(data.name);
-              // $("#match-img").attr("src", data.photo);
-              $("#results-modal").modal('toggle');
+            // $.post("/api/characters", newPerson,
+            // function(data){
               
-            })
+            //   $("#match-name").text(data.name);
+            //   // $("#match-img").attr("src", data.photo);
+            //   $("#results-modal").modal('toggle');
+              
+            // })
           } else {
             alert("Fill out all fields!")
           } 
         });
-    
+        
     </script>
   </body>
 </html>
