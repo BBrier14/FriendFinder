@@ -1,4 +1,3 @@
-// const userData = require("../data/friends");
 
 // Load data from friends.js
 //================================
@@ -33,6 +32,7 @@ module.exports = function(app) {
 
     characterData.push(req.body);
     res.json({name: characterData[matchScore].name, photo: characterData[matchScore.photo]});
+    console.log("posted")
   });
 }
 

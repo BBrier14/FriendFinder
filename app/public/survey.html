@@ -210,23 +210,56 @@
     <script type="text/javascript">
     
     
-        $("#submit").on("click", function(event) {
-          event.preventDefault();
+        // $("#submit").on("click", function(event) {
+        //   event.preventDefault();
 
-          function validateSurvey() {
-            const isValid = true;
-            $("#name").each(function() {
-              if ($("#name").val() === ""){ 
-                isValid = false;
-            }});
-            $(".choices").each(function() {
-              if ($(this).val() === ""){ 
-                isValid = false;
-            }});
-            return isValid;
-          }
-          if (validateSurvey() === true) {
-            const newPerson = {
+        //   function validateSurvey() {
+        //     const isValid = true;
+        //     $("#name").each(function() {
+        //       if ($("#name").val() === ""){ 
+        //         isValid = false;
+        //     }});
+        //     $(".choices").each(function() {
+        //       if ($(this).val() === ""){ 
+        //         isValid = false;
+        //     }});
+        //     return isValid;
+        //   }
+        //   if (validateSurvey() === true) {
+        //     const newPerson = {
+        //       name: $("#name").val(),
+        //       score: [
+        //         $("#q1").val(),
+        //         $("#q2").val(),
+        //         $("#q3").val(),
+        //         $("#q4").val(),
+        //         $("#q5").val(),
+        //         $("#q6").val(),
+        //         $("#q7").val(),
+        //         $("#q8").val(),
+        //         $("#q9").val(),
+        //         $("#q10").val()
+        //       ]
+        //     };
+        //     console.log(newPerson)
+           
+        //     $.post("/api/characters", newPerson,
+        //     function(data){
+              
+        //       $("#match-name").text(data.name);
+        //       // $("#match-img").attr("src", data.photo);
+        //       $("#results-modal").modal('toggle');
+              
+        //     })
+        //   } else {
+        //     alert("Fill out all fields!")
+        //   } 
+        // });
+
+
+        $("#submit").on("click", function(event){
+          event.preventDefault();
+          const newPerson = {
               name: $("#name").val(),
               score: [
                 $("#q1").val(),
@@ -242,19 +275,16 @@
               ]
             };
             console.log(newPerson)
-           
-            // $.post("/api/characters", newPerson,
-            // function(data){
-              
-            //   $("#match-name").text(data.name);
-            //   // $("#match-img").attr("src", data.photo);
-            //   $("#results-modal").modal('toggle');
-              
-            // })
-          } else {
-            alert("Fill out all fields!")
-          } 
-        });
+
+            $.post("/api/characters", newPerson,
+            function(data){
+              if (data) {
+                alert("you are booked!")
+              } else {
+                alert("sorry")
+              }
+            })
+        })
         
     </script>
   </body>
