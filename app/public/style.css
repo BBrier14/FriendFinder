@@ -1,0 +1,16 @@
+.jumbotron {
+        box-shadow: inset 0 0 5em 1em #000;
+        font-family: 'Anton', sans-serif;
+        text-align: center;
+
+}
+
+body {
+        background: url(images/bg.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        
+        
+}

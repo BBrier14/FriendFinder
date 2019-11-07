@@ -15,6 +15,7 @@ module.exports = function(app) {
 
   // Post request
   app.post("/api/characters", function(req, res) {
+    throw new Error("oops!");
     const bestFriendDifference = 25;
     const matchScore = 0;
 
