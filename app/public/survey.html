@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Survey</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,8 +14,7 @@
       crossorigin="anonymous"
     />
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
-    <!--Javascript and JQuery Links at bottom-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
   </head>
   <!-- -------------------------------------------------------------------------------------------------- -->
   <body>
@@ -195,72 +194,34 @@
           </div>
           <div class="modal-body">
             <h2 id="match-name"></h2>
-           
+            <img id="match-img" src="" alt="">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
-            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
-      </div>
-    </div>
-
     <!-- Script -->
     <!-- -------------------------------------------------------------------------------------------------- -->
     <script type="text/javascript">
     
     
-        // $("#submit").on("click", function(event) {
-        //   event.preventDefault();
-
-        //   function validateSurvey() {
-        //     const isValid = true;
-        //     $("#name").each(function() {
-        //       if ($("#name").val() === ""){ 
-        //         isValid = false;
-        //     }});
-        //     $(".choices").each(function() {
-        //       if ($(this).val() === ""){ 
-        //         isValid = false;
-        //     }});
-        //     return isValid;
-        //   }
-        //   if (validateSurvey() === true) {
-        //     const newPerson = {
-        //       name: $("#name").val(),
-        //       score: [
-        //         $("#q1").val(),
-        //         $("#q2").val(),
-        //         $("#q3").val(),
-        //         $("#q4").val(),
-        //         $("#q5").val(),
-        //         $("#q6").val(),
-        //         $("#q7").val(),
-        //         $("#q8").val(),
-        //         $("#q9").val(),
-        //         $("#q10").val()
-        //       ]
-        //     };
-        //     console.log(newPerson)
-           
-        //     $.post("/api/characters", newPerson,
-        //     function(data){
-              
-        //       $("#match-name").text(data.name);
-        //       // $("#match-img").attr("src", data.photo);
-        //       $("#results-modal").modal('toggle');
-              
-        //     })
-        //   } else {
-        //     alert("Fill out all fields!")
-        //   } 
-        // });
-
-
-        $("#submit").on("click", function(event){
+        $("#submit").on("click", function(event) {
           event.preventDefault();
-          const newPerson = {
+
+          function validateSurvey() {
+            const isValid = true;
+            $("#name").each(function() {
+              if ($("#name").val() === ""){ 
+                isValid = false;
+            }});
+            $(".choices").each(function() {
+              if ($(this).val() === ""){ 
+                isValid = false;
+            }});
+            return isValid;
+          }
+          if (validateSurvey() === true) {
+            const newPerson = {
               name: $("#name").val(),
               score: [
                 $("#q1").val(),
@@ -276,16 +237,49 @@
               ]
             };
             console.log(newPerson)
-
+           
             $.post("/api/characters", newPerson,
             function(data){
-              if (data) {
-                alert("you are booked!")
-              } else {
-                alert("sorry")
-              }
+              
+              $("#match-name").text(data.name);
+              $("#match-img").attr("src", data.photo);
+              $("#results-modal").modal('show');
+              
             })
-        })
+          } else {
+            alert("Fill out all fields!")
+          } 
+        });
+
+
+        // $("#submit").on("click", function(event){
+        //   event.preventDefault();
+        //   const newPerson = {
+        //       name: $("#name").val(),
+        //       score: [
+        //         $("#q1").val(),
+        //         $("#q2").val(),
+        //         $("#q3").val(),
+        //         $("#q4").val(),
+        //         $("#q5").val(),
+        //         $("#q6").val(),
+        //         $("#q7").val(),
+        //         $("#q8").val(),
+        //         $("#q9").val(),
+        //         $("#q10").val()
+        //       ]
+        //     };
+        //     console.log(newPerson)
+
+        //     $.post("/api/characters", newPerson,
+        //     function(data){
+        //       if (data) {
+        //         alert("You are part of the family!")
+        //       } else {
+        //         alert("Sorry, the books are closed")
+        //       }
+        //     })
+        // })
         
     </script>
   </body>

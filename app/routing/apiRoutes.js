@@ -16,8 +16,8 @@ module.exports = function(app) {
   // Post request
   app.post("/api/characters", function(req, res) {
     
-    const bestFriendDifference = 25;
-    const matchScore = 0;
+    let bestFriendDifference = 25;
+    let matchScore = 0;
 
     for (let i = characterData.length - 1; i >= 0; i--){
       let totalDifference = 0;
@@ -26,14 +26,14 @@ module.exports = function(app) {
         totalDifference = totalDifference + Math.abs(characterData[i].score[i] - req.body.score[k]);
       }
       if (totalDifference < bestFriendDifference) {
-        bestFriendDifference = totalDifference
+        bestFriendDifference = totalDifference;
         matchScore = i;
       }
     }
 
     characterData.push(req.body);
     res.json({name: characterData[matchScore].name, photo: characterData[matchScore.photo]});
-    console.log("posted")
+
   })
 }
 
