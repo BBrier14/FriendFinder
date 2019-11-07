@@ -43,7 +43,7 @@
       <!-- Questions -->
       <div class="form-group">
         <label for="exampleFormControlSelect1">You are quick to anger.</label>
-        <select class="choices" id="Q1">
+        <select class="choices" id="q1">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -54,8 +54,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">You do not give people a second chance.</label>
-        <select class="choices" id="Q2">
+        <label for="exampleFormControlSelect1"
+          >You do not give people a second chance.</label
+        >
+        <select class="choices" id="q2">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -66,8 +68,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Money is the most important thing in your life.</label>
-        <select class="choices" id="Q3">
+        <label for="exampleFormControlSelect1"
+          >Money is the most important thing in your life.</label
+        >
+        <select class="choices" id="q3">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -78,8 +82,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">You have a good relationship with your mother.</label>
-        <select class="choices" id="Q4">
+        <label for="exampleFormControlSelect1"
+          >You have a good relationship with your mother.</label
+        >
+        <select class="choices" id="q4">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -90,8 +96,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">You are considered a good person by your friends.</label>
-        <select class="choices" id="Q5">
+        <label for="exampleFormControlSelect1"
+          >You are considered a good person by your friends.</label
+        >
+        <select class="choices" id="q5">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -103,7 +111,7 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">You are an optomist.</label>
-        <select class="choices" id="Q6">
+        <select class="choices" id="q6">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -114,8 +122,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">You have a strong command of the English language.</label>
-        <select class="choices" id="Q7">
+        <label for="exampleFormControlSelect1"
+          >You have a strong command of the English language.</label
+        >
+        <select class="choices" id="q7">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -127,7 +137,7 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">You enjoy gambling.</label>
-        <select class="choices" id="Q8">
+        <select class="choices" id="q8">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -138,8 +148,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlSelect1">You believe rules are meant to be broken.</label>
-        <select class="choices" id="Q9">
+        <label for="exampleFormControlSelect1"
+          >You believe rules are meant to be broken.</label
+        >
+        <select class="choices" id="q9">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -151,7 +163,7 @@
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">You tolerate drug use.</label>
-        <select class="choices" id="Q10">
+        <select class="choices" id="q10">
           <option value=""></option>
           <option value="1">1- This doesn't sound like me at all.</option>
           <option value="2">2</option>
@@ -169,6 +181,32 @@
       >
         <i class="fa fa-check-circle" aria-hidden="true"></i> Submit
       </button>
+    </div>
+
+    <div id="results-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h2 class="modal-title"><strong>Best Match</strong></h2>
+          </div>
+          <div class="modal-body">
+            <h2 id="match-name"></h2>
+            <img
+              id="match-img"
+              src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg"
+              alt=""
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Script -->
@@ -203,7 +241,27 @@
                 $("#q10").val()
               ]
             };
-          }
+            const currentRoute = window.location.origin;
+            $.post(currentRoute + "/api/friends", userData,
+            function(data){
+              $("#matchName").text(data.name);
+              $("#matchImg").attr("src", data/photo);
+              $("#resultsModal").modal('toggle');
+              $("#name").val("");
+              $("#q1").val("");
+              $("#q2").val("");
+              $("#q3").val("");
+              $("#q4").val("");
+              $("#q5").val("");
+              $("#q6").val("");
+              $("#q7").val("");
+              $("#q8").val("");
+              $("#q9").val("");
+              $("#q10").val("");
+            })
+          } else {
+            alert("Fill out all fields!")
+          } return false;
         });
       });
     </script>
