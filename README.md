@@ -12,3 +12,6 @@ Unfortunately, this application reached a road block. Upon submitting the inform
 UPDATE: The Source of the internal server error was found. The only issue being experienced currently is that the modal is not functioning. I am recieving a .modal is not a function response from the console. A quick search online showed that it is normally due to the positioning of the bootstrap link and the jquery link. I followed the guide but nothing changed. Will continue to adjust until functioning.
 ## Heroku Link
 https://dashboard.heroku.com/apps/stormy-brook-76473
+## Screenshots
+![](readmeimages/1.png)
+![](readmeimages/2.png)
